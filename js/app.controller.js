@@ -5,6 +5,8 @@ import { weatherService } from './services/weather.service.js'
 window.onload = onInit;
 console.log('test')
 weatherService.getWeather()
+console.log('', weatherService.getWeather());
+
 
 function onInit() {
     mapService.initMap()
@@ -45,13 +47,13 @@ function addEventListenrs() {
                     lng: pos.coords.longitude
                 }
                 mapService.addMarker(position)
+
             })
             .catch(err => {
                 console.log('err!!!', err);
             })
     })
     var map = mapService.getMap()
-    console.log(map)
     mapService.getMap().addListener('click', function(ev) {
         console.log(map)
         mapService.saveCurrCoordinates(ev.latLng.lat(), ev.latLng.lng())
