@@ -5,9 +5,11 @@ export const mapService = {
     saveCurrCoordinates,
     getCurrPosition,
     getMap,
-    goTo
+    goTo,
+    searchLoc
 }
 
+const API_KEY = 'AIzaSyCP9zcFyyVF3srMX1Ay1XF8S-X13086A4Q';
 var gLat
 var gLng
 
@@ -46,7 +48,7 @@ function panTo(lat, lng) {
 
 function _connectGoogleApi() {
     if (window.google) return Promise.resolve()
-    const API_KEY = 'AIzaSyCP9zcFyyVF3srMX1Ay1XF8S-X13086A4Q'; //TODO: Enter your API Key
+        //TODO: Enter your API Key
     var elGoogleApi = document.createElement('script');
     elGoogleApi.src = `https://maps.googleapis.com/maps/api/js?key=${API_KEY}`;
     elGoogleApi.async = true;
@@ -76,4 +78,13 @@ function goTo(lat, lng, title) {
     saveCurrCoordinates(lat, lng)
     panTo(lat, lng)
     addMarker({ lat, lng }, title)
+}
+
+function searchLoc(adress) {
+    axios(`https://maps.googleapis.com/maps/api/geocode/json?address=${adress}&key=${API_KEY}`).then(
+        res => {
+            console.log(res.data)
+
+        }
+    )
 }

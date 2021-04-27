@@ -147,4 +147,5 @@ function openModal() {
 
 function onSearchLoc() {
     var searchInput = document.querySelector('input[name=searchLoc]').value
+    mapService.searchLoc(searchInput)
 }

@@ -9,40 +9,48 @@
 </head>
 
 <body>
-    <h1>TravelTip Starter by nadav & tamir</h1>
-    <div class="search-container">4
-        <input type="search" name="searchLoc">
-        <button onclick="onSearchLoc()">Search</button>
-    </div>
-    <div id="map" style="width: 100%; height: 400px;"></div>
-    <button class="btn-add-marker">Add Marker Speific Location</button>
-    <button class="btn-user-pos">Get User Position</button>
-    <button class="btn-get-locs">Get Locations</button>
-    <button class="btn-pan">Pan Map to Tokyo</button>
+    <datalist id="locations">
 
-    <p>You are at: <span class="user-pos"></span></p>
-    <p>Locations: <span class="locs"></span></p>
+    </datalist>
+    <header>
 
-    <div class="table-wrapper">
-        <table class="locs-table">
-            <thead>
-                <tr>
-                    <th>Location Name</th>
-                    <th colspan="2">Actions</th>
+        <h1>TravelTip Starter by nadav & tamir</h1>
+        <div class="search-container">
+            <input type="search" name="searchLoc" list="locations" onkeydown="renderOptions()">
+            <button onclick="onSearchLoc()">Search</button>
+        </div>
+    </header>
 
-                </tr>
-            </thead>
-            <tbody>
+    <main>
 
-                <tbody>
-        </table>
-    </div>
-    <div class="weather-container">
-        <h2>Weather Today</h2>
-        <img src="" alt="Weather Today">
-        <h3 class="temp"></h3>
-        <p class="desc"></p>
-    </div>
+        <div id="map" style="width: 100%; height: 400px;"></div>
+
+        <button class="btn-user-pos">Get User Position</button>
+        <div class="table-weather-container">
+
+            <div class="table-wrapper">
+                <table class="locs-table">
+                    <thead>
+                        <tr>
+                            <th>Location Name</th>
+                            <th colspan="2">Actions</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tbody>
+                </table>
+            </div>
+            <div class="weather-container">
+                <h2>Weather Today</h2>
+                <img src="" alt="Weather Today">
+                <h3 class="temp"></h3>
+                <p class="desc"></p>
+            </div>
+        </div>
+
+    </main>
 
     <script src="lib/swal.js"></script>
     <script src="lib/axios.js"></script>
