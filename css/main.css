@@ -19,9 +19,11 @@ h1 {
     margin-bottom: 15px;
 }
 
-.location-png {
+.btn-user-pos {
     height: 30px;
     cursor: pointer;
+    background-color: transparent;
+    border: none;
 }
 
 .table-wrapper {
@@ -76,6 +78,7 @@ h1 {
     background-color: rgba(255, 255, 255, 0.214);
     margin-right: 20px;
     margin-left: 20px;
+    margin-bottom: 20px;
 }
 
 .table-wrapper {
@@ -103,6 +106,10 @@ h1 {
     border-left: none;
     /* Prevent double borders */
     cursor: pointer;
+}
+
+.location-png {
+    height: 30px;
 }
 
 
