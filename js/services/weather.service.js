@@ -11,7 +11,7 @@ export const weatherService = {
 
 
 function getWeather(lat = 31.952110800000003, lng = 34.906551) {
-    return axios.get(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&units=metric&APPID=${W_KEY}`)
+    return axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&units=metric&APPID=${W_KEY}`)
         .then(res => res.data)
 }
 
@@ -42,5 +42,5 @@ function getWeather(lat = 31.952110800000003, lng = 34.906551) {
 // }
 
 function getWeatherIcon(id) {
-    return `http://openweathermap.org/img/wn/${id}@2x.png`
+    return `https://openweathermap.org/img/wn/${id}@2x.png`
 }
