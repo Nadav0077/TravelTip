@@ -42,5 +42,5 @@ function getWeather(lat = 31.952110800000003, lng = 34.906551) {
 // }
 
 function getWeatherIcon(id) {
-    return `http://openweathermap.org/img/wn/${id}@2x.png`
+    return `https://openweathermap.org/img/wn/${id}@2x.png`
 }
