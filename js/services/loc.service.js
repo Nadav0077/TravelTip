@@ -1,8 +1,9 @@
 export const locService = {
-    getLocs
+    getLocs,
+    addLoc
 }
-var locs = [
-    { name: 'Loc1', lat: 32.047104, lng: 34.832384 }, 
+var locs = [,
+    { name: 'Loc1', lat: 32.047104, lng: 34.832384 },
     { name: 'Loc2', lat: 32.047201, lng: 34.832581 }
 ]
 
@@ -14,4 +15,14 @@ function getLocs() {
     });
 }
 
-
+function addLoc(lat, lng) {
+    locs.push({
+        id,
+        name,
+        lat,
+        lng,
+        weather,
+        createdAt,
+        updatedAt
+    })
+}
