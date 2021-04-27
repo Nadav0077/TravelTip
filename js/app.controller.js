@@ -2,6 +2,7 @@ import { locService } from './services/loc.service.js'
 import { mapService } from './services/map.service.js'
 import { weatherService } from './services/weather.service.js'
 
+window.onShare = onShare
 window.onSearchLoc = onSearchLoc
 window.onDeleteLoc = onDeleteLoc
 window.onGoTo = onGoTo
@@ -14,8 +15,9 @@ console.log('', weatherService.getWeather());
 function onInit() {
     mapService.initMap()
         .then(() => {
-            // console.log('Map is ready');
-            // console.log('locs', locService.getLocs());
+            const urlParams = new URLSearchParams(window.location.search);
+            const myParam = urlParams.get('myParam');
+            console.log(myParam)
             locService.addLoc(35.6895, 139.6917, 'tokio')
             locService.addLoc(35.235, 139.63421, 'tokio')
             locService.addLoc(35.854, 139.3455, 'tokio')
@@ -149,4 +151,9 @@ function openModal() {
 function onSearchLoc() {
     var searchInput = document.querySelector('input[name=searchLoc]').value
     mapService.searchLoc(searchInput)
+}
+
+function onShare() {
+    var loc = getPosition()
+    navigator.clipboard.writeText(`https://github.io/nadav0077/TravelTip/index.html&lat=${loc.lat}&lng=${loc.lng}`)
 }
