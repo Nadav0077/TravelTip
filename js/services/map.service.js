@@ -4,7 +4,8 @@ export const mapService = {
     panTo,
     saveCurrCoordinates,
     getCurrPosition,
-    getMap
+    getMap,
+    goTo
 }
 
 var gLat
@@ -13,6 +14,7 @@ var gLng
 var gMap;
 
 function initMap(lat = 32.0749831, lng = 34.9120554) {
+    saveCurrCoordinates(lat, lng)
     return _connectGoogleApi()
         .then(() => {
             gMap = new google.maps.Map(
@@ -24,7 +26,7 @@ function initMap(lat = 32.0749831, lng = 34.9120554) {
         })
 }
 
-function addMarker(loc) {
+function addMarker(loc, name = "location") {
     var marker = new google.maps.Marker({
         position: loc,
         map: gMap,
@@ -68,4 +70,10 @@ function getCurrPosition() {
 
 function getMap() {
     return gMap;
+}
+
+function goTo(lat, lng, title) {
+    saveCurrCoordinates(lat, lng)
+    panTo(lat, lng)
+    addMarker({ lat, lng }, title)
 }

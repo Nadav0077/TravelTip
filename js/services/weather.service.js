@@ -5,7 +5,8 @@ const W_KEY = '5cc2af20f9064b14db9e3508bda4d057'
 
 
 export const weatherService = {
-    getWeather
+    getWeather,
+    getWeatherIcon
 }
 
 
@@ -39,3 +40,7 @@ function getWeather(lat = 31.952110800000003, lng = 34.906551) {
 //             })
 //     }
 // }
+
+function getWeatherIcon(id) {
+    return `http://openweathermap.org/img/wn/${id}@2x.png`
+}

@@ -5,7 +5,8 @@ import { utilService } from './util.service.js'
 
 export const locService = {
     getLocs,
-    addLoc
+    addLoc,
+    deleteLoc
 }
 var locs = [
 
@@ -13,29 +14,27 @@ var locs = [
 
 function getLocs() {
     return locs;
-    // return new Promise((resolve, reject) => {
-    //     setTimeout(() => {
-    //         resolve(locs);
-    //     }, 2000)
-    // });
 }
 
 function addLoc(lat, lng, name) {
-    weatherService.getWeather()
-        .then(res => {
+    // weatherService.getWeather()
+    //     .then(res => {
 
-            const weather = {
-                temp: res.main.temp,
-                desc: res.weather[0].description
-            }
-            locs.push({
-                id: utilService.makeId(),
-                name,
-                lat,
-                lng,
-                weather,
-                createdAt: Date.now(),
-                updatedAt: Date.now()
-            })
+    //         const weather = {
+    //             temp: res.main.temp,
+    //             desc: res.weather[0].description
+    //         }
+    locs.push({
+            id: utilService.makeId(),
+            name,
+            lat,
+            lng,
+            createdAt: Date.now(),
+            updatedAt: Date.now()
         })
+        // })
+}
+
+function deleteLoc(idx) {
+    locs.splice(idx, 1)
 }

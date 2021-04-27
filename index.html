@@ -10,6 +10,10 @@
 
 <body>
     <h1>TravelTip Starter by nadav & tamir</h1>
+    <div class="search-container">4
+        <input type="search" name="searchLoc">
+        <button onclick="onSearchLoc()">Search</button>
+    </div>
     <div id="map" style="width: 100%; height: 400px;"></div>
     <button class="btn-add-marker">Add Marker Speific Location</button>
     <button class="btn-user-pos">Get User Position</button>
@@ -33,9 +37,15 @@
                 <tbody>
         </table>
     </div>
+    <div class="weather-container">
+        <h2>Weather Today</h2>
+        <img src="" alt="Weather Today">
+        <h3 class="temp"></h3>
+        <p class="desc"></p>
+    </div>
 
-    <script src="lib/axios.js"></script>
     <script src="lib/swal.js"></script>
+    <script src="lib/axios.js"></script>
     <script type="module" src="js/app.controller.js"></script>
 </body>
 
