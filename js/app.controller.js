@@ -2,6 +2,7 @@ import { locService } from './services/loc.service.js'
 import { mapService } from './services/map.service.js'
 import { weatherService } from './services/weather.service.js'
 
+window.onRenderOptions = onRenderOptions
 window.onSearchLoc = onSearchLoc
 window.onDeleteLoc = onDeleteLoc
 window.onGoTo = onGoTo
@@ -147,5 +148,9 @@ function openModal() {
 
 function onSearchLoc() {
     var searchInput = document.querySelector('input[name=searchLoc]').value
+    mapService.searchLoc(searchInput)
+}
+
+function onRenderOptions() {
     mapService.searchLoc(searchInput)
 }
