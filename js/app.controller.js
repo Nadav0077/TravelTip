@@ -154,6 +154,6 @@ function onSearchLoc() {
 }
 
 function onShare() {
-    var loc = getPosition()
+    var loc = mapService.getCurrPosition()
     navigator.clipboard.writeText(`https://github.io/nadav0077/TravelTip/index.html&lat=${loc.lat}&lng=${loc.lng}`)
 }
