@@ -12,9 +12,23 @@ function onInit() {
     mapService.initMap()
         .then(() => {
             console.log('Map is ready');
+            console.log('locs', locService.getLocs());
+            locService.addLoc(35.6895, 139.6917, 'tokio')
+            locService.addLoc(35.235, 139.63421, 'tokio')
+            locService.addLoc(35.854, 139.3455, 'tokio')
             addEventListenrs();
+
         })
         .catch(() => console.log('Error: cannot init map'));
+}
+
+function renderTable() {
+    const locs = locService.getLocs();
+    var strHtml = locs.map(loc => {
+        return ``
+    })
+    var elTable = document.querySelector('');
+
 }
 
 function addEventListenrs() {
