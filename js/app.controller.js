@@ -46,7 +46,7 @@ function renderTable() {
 }
 
 function addEventListenrs() {
-    // document.querySelector('.btn-pan').addEventListener('click', (ev) => {
+    // document.querySelector('.-pan').addEventListener('click', (ev) => {
     //     mapService.panTo(35.6895, 139.6917);
     // })
     // document.querySelector('.btn-add-marker').addEventListener('click', (ev) => {
@@ -151,6 +151,7 @@ function openModal() {
 function onSearchLoc() {
     var searchInput = document.querySelector('input[name=searchLoc]').value
     mapService.searchLoc(searchInput)
+    renderWeather()
 }
 
 function onShare() {
