@@ -5,10 +5,10 @@ window.onload = onInit;
 console.log('test')
 
 function onInit() {
-    addEventListenrs();
     mapService.initMap()
         .then(() => {
             console.log('Map is ready');
+            addEventListenrs();
         })
         .catch(() => console.log('Error: cannot init map'));
 }
@@ -36,11 +36,31 @@ function addEventListenrs() {
                 console.log('User position is:', pos.coords);
                 document.querySelector('.user-pos').innerText =
                     `Latitude: ${pos.coords.latitude} - Longitude: ${pos.coords.longitude}`
+                mapService.panTo(pos.coords.latitude, pos.coords.longitude)
+
+                const position = {
+                    lat: pos.coords.latitude,
+                    lng: pos.coords.longitude
+                }
+                mapService.addMarker(position)
             })
             .catch(err => {
                 console.log('err!!!', err);
             })
     })
+    var map = mapService.getMap()
+    console.log(map)
+    mapService.getMap().addListener('click', function(ev) {
+        console.log(map)
+        mapService.saveCurrCoordinates(ev.latLng.lat(), ev.latLng.lng())
+        const position = {
+            lat: mapService.getCurrPosition().lat,
+            lng: mapService.getCurrPosition().lng
+        }
+        mapService.addMarker(position)
+
+    });
+
 }
 
 

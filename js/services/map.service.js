@@ -1,8 +1,14 @@
 export const mapService = {
     initMap,
     addMarker,
-    panTo
+    panTo,
+    saveCurrCoordinates,
+    getCurrPosition,
+    getMap
 }
+
+var gLat
+var gLng
 
 var gMap;
 
@@ -26,6 +32,8 @@ function addMarker(loc) {
         map: gMap,
         title: 'Hello World!'
     });
+
+    console.log('marker', loc)
     return marker;
 }
 
@@ -48,4 +56,18 @@ function _connectGoogleApi() {
         elGoogleApi.onload = resolve;
         elGoogleApi.onerror = () => reject('Google script failed to load')
     })
+}
+
+
+function saveCurrCoordinates(lat, lng) {
+    gLat = lat;
+    gLng = lng;
+}
+
+function getCurrPosition() {
+    return { lat: gLat, lng: gLng }
+}
+
+function getMap() {
+    return gMap;
 }
