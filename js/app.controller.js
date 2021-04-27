@@ -13,11 +13,12 @@ console.log('', weatherService.getWeather());
 
 
 function onInit() {
-    mapService.initMap()
+    const urlParams = new URLSearchParams(window.location.search);
+    const lat = urlParams.get('lat');
+    const lng = urlParams.get('lng');
+
+    mapService.initMap(lat, lng)
         .then(() => {
-            const urlParams = new URLSearchParams(window.location.search);
-            const myParam = urlParams.get('myParam');
-            console.log(myParam)
             locService.addLoc(35.6895, 139.6917, 'tokio')
             locService.addLoc(35.235, 139.63421, 'tokio')
             locService.addLoc(35.854, 139.3455, 'tokio')
@@ -156,5 +157,15 @@ function onSearchLoc() {
 
 function onShare() {
     var loc = mapService.getCurrPosition()
-    navigator.clipboard.writeText(`https://github.io/nadav0077/TravelTip/index.html&lat=${loc.lat}&lng=${loc.lng}`)
+    var link = `https://nadav0077.github.io/TravelTip/?lat=${loc.lat}&lng=${loc.lng}`
+    navigator.clipboard.writeText(link)
+}
+
+function getParameterByName(name, url = window.location.href) {
+    name = name.replace(/[\[\]]/g, '\\$&');
+    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
 }

@@ -16,6 +16,10 @@ var gLng
 var gMap;
 
 function initMap(lat = 32.0749831, lng = 34.9120554) {
+    if (!(lat && lng)) {
+        lat = 32.0749831
+        lng = 34.9120554
+    }
     saveCurrCoordinates(lat, lng)
     return _connectGoogleApi()
         .then(() => {
