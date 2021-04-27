@@ -2,7 +2,6 @@ import { locService } from './services/loc.service.js'
 import { mapService } from './services/map.service.js'
 import { weatherService } from './services/weather.service.js'
 
-window.onRenderOptions = onRenderOptions
 window.onSearchLoc = onSearchLoc
 window.onDeleteLoc = onDeleteLoc
 window.onGoTo = onGoTo
@@ -45,24 +44,24 @@ function renderTable() {
 }
 
 function addEventListenrs() {
-    document.querySelector('.btn-pan').addEventListener('click', (ev) => {
-        mapService.panTo(35.6895, 139.6917);
-    })
-    document.querySelector('.btn-add-marker').addEventListener('click', (ev) => {
-        mapService.addMarker({ lat: 32.0749831, lng: 34.9120554 });
-    })
-    document.querySelector('.btn-get-locs').addEventListener('click', (ev) => {
-        locService.getLocs()
-            .then(locs => {
-                document.querySelector('.locs').innerText = JSON.stringify(locs)
-            })
+    // document.querySelector('.btn-pan').addEventListener('click', (ev) => {
+    //     mapService.panTo(35.6895, 139.6917);
+    // })
+    // document.querySelector('.btn-add-marker').addEventListener('click', (ev) => {
+    //     mapService.addMarker({ lat: 32.0749831, lng: 34.9120554 });
+    // })
+    // document.querySelector('.btn-get-locs').addEventListener('click', (ev) => {
+    //     locService.getLocs()
+    //         .then(locs => {
+    //             document.querySelector('.locs').innerText = JSON.stringify(locs)
+    //         })
 
-    })
+    // })
     document.querySelector('.btn-user-pos').addEventListener('click', (ev) => {
         getPosition()
             .then(pos => {
-                document.querySelector('.user-pos').innerText =
-                    `Latitude: ${pos.coords.latitude} - Longitude: ${pos.coords.longitude}`
+                // document.querySelector('.user-pos').innerText =
+                //     `Latitude: ${pos.coords.latitude} - Longitude: ${pos.coords.longitude}`
                 mapService.panTo(pos.coords.latitude, pos.coords.longitude)
 
                 const position = {
@@ -80,9 +79,10 @@ function addEventListenrs() {
     mapService.getMap().addListener('click', function(ev) {
         mapService.saveCurrCoordinates(ev.latLng.lat(), ev.latLng.lng())
         const position = {
-            lat: mapService.getCurrPosition().lat,
-            lng: mapService.getCurrPosition().lng
-        }
+                lat: mapService.getCurrPosition().lat,
+                lng: mapService.getCurrPosition().lng
+            }
+            // console.log('inmap')
         openModal()
 
     });
@@ -148,9 +148,5 @@ function openModal() {
 
 function onSearchLoc() {
     var searchInput = document.querySelector('input[name=searchLoc]').value
-    mapService.searchLoc(searchInput)
-}
-
-function onRenderOptions() {
     mapService.searchLoc(searchInput)
 }

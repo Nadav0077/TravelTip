@@ -83,7 +83,10 @@ function goTo(lat, lng, title) {
 function searchLoc(adress) {
     axios(`https://maps.googleapis.com/maps/api/geocode/json?address=${adress}&key=${API_KEY}`).then(
         res => {
-            console.log(res.data)
+            console.log(res)
+            var locaiton = res.data.results[0].geometry.location
+            console.log(locaiton)
+            goTo(location.lat, locaiton.lng, res.data.results[0].formatted_address)
 
         }
     )
