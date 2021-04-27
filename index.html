@@ -17,16 +17,16 @@
 
         <h1>TravelTip by Nadav & Tamir</h1>
         <div class="search-container">
-            <input type="search" name="searchLoc">
-            <button onclick="onSearchLoc()">Search</button>
+            <input class="search" type="search" name="searchLoc">
+            <button class="search-btn" onclick="onSearchLoc()">Search</button>
         </div>
+        <button class="btn-user-pos"><img class="location-png" src="location.png"></button>
     </header>
 
     <main>
 
         <div id="map" style="width: 100%; height: 400px;"></div>
 
-        <button class="btn-user-pos">Get User Position</button>
         <div class="table-weather-container">
 
             <div class="table-wrapper">
