@@ -1,3 +1,8 @@
+'use strict'
+
+import { weatherService } from './weather.service.js'
+import { utilService } from './util.service.js'
+
 export const locService = {
     getLocs,
     addLoc
@@ -17,12 +22,12 @@ function getLocs() {
 
 function addLoc(lat, lng) {
     locs.push({
-        id,
+        id: utilService.makeId(),
         name,
         lat,
         lng,
-        weather,
-        createdAt,
-        updatedAt
+        weather: weatherService.getWeather(lat, lng),
+        createdAt: Date.now(),
+        updatedAt: Date.now()
     })
 }

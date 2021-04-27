@@ -7,7 +7,7 @@ export const weatherService = {
 }
 
 
-function getWeather(lat = 32.0749831, lng = 34.9120554) {
-    return axios.get(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&APPID=${W_KEY}`).then(res => res.data);
+function getWeather(lat = 31.952110800000003, lng = 34.906551) {
+    return axios.get(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&units=metric&APPID=${W_KEY}`).then(res => { res.data.temp, res.data.weather[0].description });
 
 }
