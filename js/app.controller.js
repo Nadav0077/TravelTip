@@ -16,8 +16,8 @@ function onInit() {
     const urlParams = new URLSearchParams(window.location.search);
     const lat = urlParams.get('lat');
     const lng = urlParams.get('lng');
-
-    mapService.initMap(lat, lng)
+    console.log(lat, lng)
+    mapService.initMap()
         .then(() => {
             locService.addLoc(35.6895, 139.6917, 'tokio')
             locService.addLoc(35.235, 139.63421, 'tokio')
